@@ -1,18 +1,23 @@
 const geocodeUrl = require("./utils/geocode");
 const forecast = require("./utils/forecast");
 
-geocodeUrl("Abuja", (err, data) => {
-	if (err) {
-		console.log(err);
-	} else {
-		console.log(data);
-	}
-});
+const location = process.argv[2];
 
-forecast(9.05, 7.5, (err, data) => {
-	if (err) {
-		console.log(err);
-	} else {
-		console.log(data);
-	}
-});
+if (location) {
+	geocodeUrl(location, (err, { latitude, longitude, location }) => {
+		if (err) {
+			return console.log(err);
+		}
+
+		forecast(latitude, longitude, (err, data) => {
+			if (err) {
+				return console.log(err);
+			}
+
+			console.log(location);
+			console.log(data);
+		});
+	});
+} else {
+	console.log("Please provide a location");
+}
