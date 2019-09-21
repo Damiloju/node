@@ -28,7 +28,6 @@ header {
 
 h1 {
 	font-size: 64px;
-	font-weight: 100;
 	margin-bottom: 16px;
 }
 
@@ -40,4 +39,17 @@ header a {
 
 .portrait {
 	width: 250px;
+}
+
+input {
+	border: 1px solid #cccccc;
+	padding: 8px;
+}
+
+button {
+	cursor: pointer;
+	border: 1px solid #888888;
+	background: #888888;
+	color: white;
+	padding: 8px;
 }
