@@ -12,7 +12,7 @@ app.post("/users", (req, res) => {
     const user = new User(req.body);
 
     user.save().then((response) => {
-        res.send(response);
+        res.status(201).send(response);
     }).catch((err) => {
         res.status(400).send(err);
     })
@@ -22,7 +22,7 @@ app.post("/tasks", (req, res) => {
     const task = new Task(req.body);
 
     task.save().then((response) => {
-        res.send(response);
+        res.status(201).send(response);
     }).catch((err) => {
         res.status(400).send(err);
     })
