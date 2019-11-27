@@ -21,11 +21,17 @@ hbs.registerPartials(partialsDirectoryPath);
 app.use(express.static(publicDirectoryPath));
 
 app.get("", (req, res) => {
-	res.render("index", { title: "Weather App", name: "Damiloju" });
+	res.render("index", {
+		title: "Weather App",
+		name: "Damiloju"
+	});
 });
 
 app.get("/about", (req, res) => {
-	res.render("about", { title: "About Page", name: "Damiloju" });
+	res.render("about", {
+		title: "About Page",
+		name: "Damiloju"
+	});
 });
 
 app.get("/help", (req, res) => {
@@ -38,18 +44,28 @@ app.get("/help", (req, res) => {
 
 app.get("/weather", (req, response) => {
 	if (!req.query.address) {
-		return response.send({ error: "Please provide an address" });
+		return response.send({
+			error: "Please provide an address"
+		});
 	}
 	geocode(req.query.address, (err, res) => {
 		if (err) {
-			return response.send({ error: err });
+			return response.send({
+				error: err
+			});
 		}
 
-		const { latitude, longitude, location } = res;
+		const {
+			latitude,
+			longitude,
+			location
+		} = res;
 
 		forecast(latitude, longitude, (err, data) => {
 			if (err) {
-				return response.send({ error: err });
+				return response.send({
+					error: err
+				});
 			}
 
 			response.send({
@@ -78,5 +94,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(port, () => {
-	console.log("Server running on port " + port);
+	console.log(`Server running on port ${port}`);
 });
