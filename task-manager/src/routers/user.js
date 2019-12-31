@@ -111,6 +111,13 @@ const avatarUpload = multer({
   dest: 'avatars',
   limits: {
     fileSize: 1000000
+  },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(jpeg|jpg|png)$/)) {
+      return cb(new Error("Please upload an image"));
+    }
+
+    cb(undefined, true);
   }
 });
 
